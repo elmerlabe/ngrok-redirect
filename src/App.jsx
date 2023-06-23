@@ -36,10 +36,10 @@ function App() {
   }, []);
 
   return (
-    <div className="mt-5">
+    <div>
       <img src={mgwLogo} />
-      <h1 className="mt-1">MUGIWARA WIFI</h1>
-      <h2>CONNECT EVERYWHERE</h2>
+      <h2 className="mt-1">MUGIWARA WIFI</h2>
+      <h4>CONNECT EVERYWHERE</h4>
       {msg === '' && <a href={httpsUrl}>Redirect to NGROK link</a>}
 
       <p className="error">{msg}</p>
