@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import mgwLogo from './assets/mgw.png';
+import camLogo from './assets/Security-Camera-icon.png';
 import './App.css';
 
 const NGROK_API_URL = import.meta.env.VITE_NGROK_API_URL;
@@ -24,22 +24,22 @@ function App() {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         if (res.status_code >= 100) {
-          console.log(res.msg);
           setMsg(res.msg);
         } else {
-          setHttpsUrl(res.endpoints[1].public_url);
-          window.location.href = res.endpoints[1].public_url;
+          const publicUrl = res.endpoints[0].public_url;
+          setHttpsUrl(publicUrl);
+          window.location.replace(publicUrl);
         }
       });
   }, []);
 
   return (
     <div>
-      <img src={mgwLogo} />
-      <h2 className="mt-1">MUGIWARA WIFI</h2>
-      <h4>CONNECT EVERYWHERE</h4>
+      <img src={camLogo} />
+      <h2 className="mt-1">RASPBERRY PI CAM</h2>
+      <h4>ROOM 102</h4>
       {msg === '' && <a href={httpsUrl}>Redirect to NGROK link</a>}
 
       <p className="error">{msg}</p>
