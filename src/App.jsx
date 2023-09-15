@@ -29,8 +29,9 @@ function App() {
           console.log(res.msg);
           setMsg(res.msg);
         } else {
-          setHttpsUrl(res.endpoints[1].public_url);
-          window.location.href = res.endpoints[1].public_url;
+          const url = res.endpoints[0].public_url;
+          setHttpsUrl(url);
+          window.location.href = url;
         }
       });
   }, []);
